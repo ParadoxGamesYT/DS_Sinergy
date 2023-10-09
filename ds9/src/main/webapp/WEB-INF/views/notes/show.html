@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Note</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      margin: 0;
+      padding: 0;
+    }
+
+    .note-container {
+      background-color: #fff;
+      max-width: 600px;
+      margin: 20px auto;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h3 {
+      margin-top: 0;
+    }
+
+    p {
+      margin-bottom: 20px;
+    }
+
+    a {
+      text-decoration: none;
+      color: #007BFF;
+      margin-right: 10px;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .delete-form {
+      display: inline-block;
+    }
+
+    .delete-button {
+      background-color: #dc3545;
+      color: #fff;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .delete-button:hover {
+      background-color: #c82333;
+    }
+  </style>
+</head>
+<body>
+
+<div class="note-container">
+  <h3>Your note:</h3>
+  <p th:text="${note.getNote()}">NOTE</p>
+  <a th:href="@{/notes/{id}/edit(id=${note.getId()})}">Edit</a>
+  <form th:method="DELETE" th:action="@{/notes/{id}(id=${note.getId()})}" class="delete-form">
+    <input type="submit" value="Delete" class="delete-button"/>
+  </form>
+</div>
+
+</body>
+</html>
+
